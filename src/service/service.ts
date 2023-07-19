@@ -11,3 +11,8 @@ export const auth = async(url: string, data: object, setData: Function) => {
   const response = await api.post(url, data);
   setData(response.data);
 }
+
+export const basicGet= async(url: string, setData: Function, headers: object) => {
+  const response = await api.get(url, headers);
+  setData(response.data);
+}

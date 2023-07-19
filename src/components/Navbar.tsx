@@ -6,6 +6,8 @@ import {
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import logo from "../assets/Logotipo Colorido.png";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export function Navbar() {
   const categorias = [
@@ -36,6 +38,8 @@ export function Navbar() {
     },
   ];
 
+  const {usuario} = useContext(AuthContext);
+
   return (
     <>
       <nav className=" py-4">
@@ -55,7 +59,7 @@ export function Navbar() {
             </label>
           </div>
           <div className="flex space-x-4 text-xl text-neutral-700">
-            <Link to="/login" className="hover:text-teal-600">
+            <Link to={usuario.token !== '' ? '/perfil' : '/login'} className="hover:text-teal-600">
               <FaUserLarge />
             </Link>
             <FaBasketShopping />

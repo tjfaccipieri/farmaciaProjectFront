@@ -1,15 +1,17 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import {
   FaArrowRightFromBracket,
   FaEnvelope,
   FaLock,
   FaRotateRight,
 } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { UserLogin } from "../models/UserLogin";
 
 export function Login() {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState<UserLogin>({} as UserLogin);
 
   const { usuario, handleLogin, isLoading } = useContext(AuthContext);
@@ -25,6 +27,12 @@ export function Login() {
     event.preventDefault();
     handleLogin(user);
   }
+
+  useEffect(() => {
+    if(usuario.token !== '') {
+      navigate('/');
+    }
+  }, [usuario]);
 
   return (
     <div className="m-auto flex max-w-2xl flex-col gap-4">

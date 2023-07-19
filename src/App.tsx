@@ -7,6 +7,7 @@ import { Navbar } from "./components/Navbar";
 import { SimpleProduct } from "./components/Produtos/SimpleProduct";
 import { AuthProvider } from "./context/AuthContext";
 import { Cadastro } from "./Pages/Cadastro";
+import { Perfil } from "./Pages/Perfil";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/perfil" element={<Perfil />} />
             <Route path="/medicamentos" element={<SimpleProduct />} />
           </Routes>
         </div>
