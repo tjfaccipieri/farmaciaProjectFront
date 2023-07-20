@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import { Cadastro } from "./Pages/Cadastro";
 import { Home } from "./Pages/Home";
 import { Login } from "./Pages/Login";
+import { Perfil } from "./Pages/Perfil/Perfil";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import { SimpleProduct } from "./components/Produtos/SimpleProduct";
 import { AuthProvider } from "./context/AuthContext";
-import { Cadastro } from "./Pages/Cadastro";
-import { Perfil } from "./Pages/Perfil";
 
 function App() {
   return (
