@@ -12,7 +12,7 @@ export const auth = async(url: string, data: object, setData: Function) => {
   setData(response.data);
 }
 
-export const basicGet= async(url: string, setData: Function, headers: object) => {
+export const getWithToken= async(url: string, setData: Function, headers: object) => {
   const response = await api.get(url, headers);
   setData(response.data);
 }
