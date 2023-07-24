@@ -73,10 +73,12 @@ export function PerfilLayout() {
             Alterar senha
           </li>
          </Link>
-          <li className="group flex w-fit cursor-pointer items-center gap-4">
-            <FaCreditCard className="text-xl text-teal-600 group-hover:text-teal-800" />
-            Meus cartões
-          </li>
+          <Link to='cartoes'>
+            <li className="group flex w-fit cursor-pointer items-center gap-4">
+              <FaCreditCard className="text-xl text-teal-600 group-hover:text-teal-800" />
+              Meus cartões
+            </li>
+          </Link>
           <li className="group flex w-fit cursor-pointer items-center gap-4">
             <FaMapLocationDot className="text-xl text-teal-600 group-hover:text-teal-800" />
             Meus endereços

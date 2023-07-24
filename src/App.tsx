@@ -10,6 +10,7 @@ import { SimpleProduct } from "./components/Produtos/SimpleProduct";
 import { AuthProvider } from "./context/AuthContext";
 import { DadosBase } from "./Pages/Perfil/DadosBase";
 import { AlterarSenha } from "./Pages/Perfil/AlterarSenha";
+import { Cartoes } from "./Pages/Perfil/Cartoes";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/perfil" element={<PerfilLayout />}>
               <Route path='' element={<DadosBase />} />
               <Route path='alterarsenha' element={<AlterarSenha />} />
+              <Route path='cartoes' element={<Cartoes />} />
             </Route>
             <Route path="/medicamentos" element={<SimpleProduct />} />
           </Routes>
