@@ -12,7 +12,17 @@ import { User } from "../../models/User";
 import { getWithToken } from "../../service/service";
 
 export function PerfilLayout() {
-  const [user, setUser] = useState<User>({} as User);
+  const [user, setUser] = useState<User>({
+    id: 0,
+    nome: "",
+    email: "",
+    senha: "",
+    cpf: "",
+    tipo: "",
+    contato1: "",
+    contato2: "",
+    dataNascimento: "",
+  });
   const { usuario } = useContext(AuthContext);
   async function getUserById() {
     try {
@@ -21,14 +31,25 @@ export function PerfilLayout() {
           Authorization: usuario.token,
         },
       });
+
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    getUserById();
-  }, [usuario]);
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    getUserById()
+  }, []);
+
+  useEffect(() => {
+    if (user.senha !== '') {
+      setUser({
+        ...user,
+        senha: ''
+      })
+    }
+  }, [user.id])
 
   return (
     <div className="grid grid-cols-5">
@@ -67,7 +88,7 @@ export function PerfilLayout() {
         </ul>
       </aside>
       <div className="col-span-4 flex flex-col">
-        <Outlet context={user} />
+        <Outlet context={[user, setUser]} />
       </div>
     </div>
   );
