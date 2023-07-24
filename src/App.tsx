@@ -3,11 +3,13 @@ import "./App.css";
 import { Cadastro } from "./Pages/Cadastro";
 import { Home } from "./Pages/Home";
 import { Login } from "./Pages/Login";
-import { Perfil } from "./Pages/Perfil/Perfil";
+import { PerfilLayout } from "./Pages/Perfil/PerfilLayout";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import { SimpleProduct } from "./components/Produtos/SimpleProduct";
 import { AuthProvider } from "./context/AuthContext";
+import { DadosBase } from "./Pages/Perfil/DadosBase";
+import { AlterarSenha } from "./Pages/Perfil/AlterarSenha";
 
 function App() {
   return (
@@ -19,7 +21,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/perfil" element={<PerfilLayout />}>
+              <Route path='' element={<DadosBase />} />
+              <Route path='alterarsenha' element={<AlterarSenha />} />
+            </Route>
             <Route path="/medicamentos" element={<SimpleProduct />} />
           </Routes>
         </div>

@@ -32,6 +32,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       await auth("/usuarios/logar", userLogin, setUsuario);
       alert("Usuário logado com sucesso!");
       setIsLoading(false);
+      console.table(usuario)
     } catch (error) {
       // console.log(error.toString());
       if (error.message.includes("401")) {

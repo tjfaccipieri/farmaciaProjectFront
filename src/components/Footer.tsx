@@ -99,9 +99,9 @@ export function Footer() {
           <div className="flex flex-col items-center col-span-2">
             <h3 className="font-bold text-lg mb-5">Assine nossa newsletter</h3>
             <form className='flex gap-4'>
-              <input type="text" placeholder='Digite seu nome' className='rounded-xl px-2 outline-none' />
+              <input type="text" placeholder='Digite seu nome' className='rounded-xl px-2 outline-none text-neutral-800' />
               <div className='flex h-10'>
-                <input type="email" placeholder='Digite seu e-mail' className='rounded-l-xl h-full px-2 outline-none' />
+                <input type="email" placeholder='Digite seu e-mail' className='rounded-l-xl h-full px-2 outline-none text-neutral-800' />
                 <button className='bg-teal-600 rounded-r-xl h-full px-4'>Enviar</button>
               </div>
             </form>
