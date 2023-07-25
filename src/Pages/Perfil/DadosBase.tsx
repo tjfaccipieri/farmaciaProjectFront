@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useOutletContext } from "react-router-dom";
 import { User } from "../../models/User";
 import { ChangeEvent } from "react";
 
 export function DadosBase() {
-  const {user, setUser}: unknown = useOutletContext();
+  const {user, setUser}: any = useOutletContext();
 
   function handleUpdateForm(event: ChangeEvent<HTMLInputElement>) {
     setUser({
