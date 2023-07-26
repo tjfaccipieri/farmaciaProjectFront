@@ -12,17 +12,7 @@ import { User } from "../../models/User";
 import { getWithToken } from "../../service/service";
 
 export function PerfilLayout() {
-  const [user, setUser] = useState<User>({
-    id: 0,
-    nome: "",
-    email: "",
-    senha: "",
-    cpf: "",
-    tipo: "",
-    contato1: "",
-    contato2: "",
-    dataNascimento: "",
-  });
+  const [user, setUser] = useState<User>({} as User);
   const { usuario } = useContext(AuthContext);
   async function getUserById() {
     try {
@@ -42,14 +32,14 @@ export function PerfilLayout() {
     getUserById()
   }, []);
 
-  useEffect(() => {
-    if (user.senha !== '') {
-      setUser({
-        ...user,
-        senha: ''
-      })
-    }
-  }, [user.id])
+  // useEffect(() => {
+  //   if (user.senha !== '') {
+  //     setUser({
+  //       ...user,
+  //       senha: ''
+  //     })
+  //   }
+  // }, [user.id])
 
   return (
     <div className="grid grid-cols-5">
@@ -58,7 +48,7 @@ export function PerfilLayout() {
           <div className="flex h-10 w-10 items-end justify-center overflow-hidden rounded-full bg-neutral-300">
             <FaUserLarge className="text-3xl text-teal-600" />
           </div>
-          <h3 className="font-semibold text-slate-900">Olá, {user.nome}</h3>
+          <h3 className="font-semibold text-slate-900">Olá, {usuario.nome}</h3>
         </div>
         <ul className="flex flex-col gap-6">
           <Link to="">

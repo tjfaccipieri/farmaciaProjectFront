@@ -4,7 +4,7 @@ import { User } from "../../models/User";
 import { ChangeEvent } from "react";
 
 export function DadosBase() {
-  const {user, setUser}: any = useOutletContext();
+  const [user, setUser]: any = useOutletContext();
 
   function handleUpdateForm(event: ChangeEvent<HTMLInputElement>) {
     setUser({

@@ -1,11 +1,26 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { User } from "../../models/User";
 
 export function AlterarSenha() {
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
-  const user: User = useOutletContext();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const [user, setUser]: any = useOutletContext();
+
+  useEffect(() => {
+    setUser({
+      ...user,
+      senha: ''
+    })
+  }, [])
+
+  function handleUpdateForm(event: ChangeEvent<HTMLInputElement>) {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
+  }
 
   console.log(user);
 
@@ -20,6 +35,7 @@ export function AlterarSenha() {
             name="senha"
             id="senha"
             value={user.senha}
+            onChange={(event) => handleUpdateForm(event)}
           />
         </div>
         <div className="flex flex-col">
