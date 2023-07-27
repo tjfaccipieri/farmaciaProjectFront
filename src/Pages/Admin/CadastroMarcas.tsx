@@ -5,6 +5,8 @@ import { PropagateLoader } from "react-spinners";
 import { AuthContext } from "../../context/AuthContext";
 import { Marca } from "../../models/Marca";
 import { getWithToken, post } from "../../service/service";
+import { talert } from "../../utils/alert";
+import { FaPen, FaTrash } from "react-icons/fa6";
 
 export function CadastroMarcas() {
   const { usuario } = useContext(AuthContext);
@@ -30,20 +32,30 @@ export function CadastroMarcas() {
 
   async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    const nomeMarcaValue = nomeMarca.current?.value;
+    const logoMarcaValue = logoMarca.current?.value;
+
+    if (!nomeMarcaValue || !logoMarcaValue) {
+      talert("Campos obrigatórios não preenchidos", "error");
+      return;
+    }
+
     const data = {
-      marca: nomeMarca.current?.value,
-      logo: logoMarca.current?.value,
+      marca: nomeMarcaValue,
+      logo: logoMarcaValue,
     };
 
-    console.log(usuario.token);
     try {
       await post("/marcas", data, {
         headers: {
           Authorization: usuario.token,
         },
       });
+      talert("Marca cadastrada com sucesso", "");
     } catch (error) {
       console.log(error);
+      talert("Erro ao cadastrar marca", "error");
     }
   }
 
@@ -62,6 +74,7 @@ export function CadastroMarcas() {
             Nome da marca:
           </label>
           <input
+            required
             ref={nomeMarca}
             type="text"
             placeholder="Nome da marca"
@@ -76,6 +89,7 @@ export function CadastroMarcas() {
             Logo da marca:
           </label>
           <input
+            required
             ref={logoMarca}
             type="text"
             placeholder="URL da imagem"
@@ -104,12 +118,20 @@ export function CadastroMarcas() {
           {marcas.map((marca) => (
             <div
               key={marca.id}
-              className="group flex items-center gap-6 rounded-lg border-2 border-neutral-700 bg-white p-4 shadow-md shadow-teal-700/40 hover:bg-neutral-200"
+              className="group flex flex-col h-24 justify-center gap-4 rounded-lg border-2 border-neutral-700 bg-white p-4 shadow-md shadow-teal-700/40 hover:bg-emerald-50 duration-200"
             >
-              <img src={marca.logo} alt="" className="h-10 object-contain" />
-              <h3 className="text-2xl font-semibold">{marca.marca}</h3>
-              <span className="hidden group-hover:block">editar</span>
-              <span className="hidden group-hover:block">apagar</span>
+              <div className="flex items-center gap-4">
+                <img src={marca.logo} alt="" className="object-contain h-16 w-16" />
+                <h3 className="text-2xl font-semibold">{marca.marca}</h3>
+                <div className="ml-auto hidden flex-col items-center gap-4 group-hover:flex">
+                  <span className="text-sky-700">
+                    <FaPen />
+                  </span>
+                  <span className="text-red-700">
+                    <FaTrash />
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
