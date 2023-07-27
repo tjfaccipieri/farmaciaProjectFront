@@ -1,4 +1,5 @@
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
+import { PropagateLoader } from "react-spinners";
 import { AuthContext } from "../../context/AuthContext";
 import { Marca } from "../../models/Marca";
 import { getWithToken, post } from "../../service/service";
@@ -6,8 +7,8 @@ import { getWithToken, post } from "../../service/service";
 export function CadastroMarcas() {
   const { usuario } = useContext(AuthContext);
 
-  const nomeMarca = useRef();
-  const logoMarca = useRef();
+  const nomeMarca = useRef() as any;
+  const logoMarca = useRef() as any;
 
   const [marcas, setMarcas] = useState<Marca[]>([]);
 
@@ -20,7 +21,9 @@ export function CadastroMarcas() {
   }
 
   useEffect(() => {
-    getMarcas();
+    setTimeout(() => {
+      getMarcas();
+    }, 1500);
   }, []);
 
   async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
@@ -89,14 +92,22 @@ export function CadastroMarcas() {
         <h2 className="text-center text-3xl font-bold">
           Lista de marcas cadastradas:
         </h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+
+        {marcas.length === 0 && (
+          <div className="mt-10 flex w-full justify-center">
+            <PropagateLoader color="rgb(20 184 166)" size={25} />
+          </div>
+        )}
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
           {marcas.map((marca) => (
             <div
               key={marca.id}
-              className="rounded-lg  border-2 border-neutral-700 bg-white p-4 shadow-md shadow-teal-700/40"
+              className="group flex items-center gap-6 rounded-lg border-2 border-neutral-700 bg-white p-4 shadow-md shadow-teal-700/40 hover:bg-neutral-200"
             >
+              <img src={marca.logo} alt="" className="h-10 object-contain" />
               <h3 className="text-2xl font-semibold">{marca.marca}</h3>
-              <p>{marca.logo}</p>
+              <span className="hidden group-hover:block">editar</span>
+              <span className="hidden group-hover:block">apagar</span>
             </div>
           ))}
         </div>

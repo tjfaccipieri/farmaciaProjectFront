@@ -13,10 +13,14 @@ import { AlterarSenha } from "./Pages/Perfil/AlterarSenha";
 import { Cartoes } from "./Pages/Perfil/Cartoes";
 import { AdminLayout } from "./Pages/Admin/AdminLayout";
 import { CadastroMarcas } from "./Pages/Admin/CadastroMarcas";
+import {ToastContainer} from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <AuthProvider>
+      <ToastContainer />
       <BrowserRouter>
         <Navbar />
         <div className="container mx-auto my-4 min-h-[50vh]">
