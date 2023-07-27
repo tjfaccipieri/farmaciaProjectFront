@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { PropagateLoader } from "react-spinners";
 import { AuthContext } from "../../context/AuthContext";
@@ -7,8 +9,8 @@ import { getWithToken, post } from "../../service/service";
 export function CadastroMarcas() {
   const { usuario } = useContext(AuthContext);
 
-  const nomeMarca = useRef() as any;
-  const logoMarca = useRef() as any;
+  const nomeMarca = useRef<HTMLInputElement>(null);
+  const logoMarca = useRef<HTMLInputElement>(null);
 
   const [marcas, setMarcas] = useState<Marca[]>([]);
 
