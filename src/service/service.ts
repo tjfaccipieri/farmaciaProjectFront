@@ -16,3 +16,8 @@ export const getWithToken= async(url: string, setData: Function, headers: object
   const response = await api.get(url, headers);
   setData(response.data);
 }
+
+export const post = async(url: string, data: object, headers: object) => {
+  const response = await api.post(url, data, headers);
+  // setData(response.data);
+}

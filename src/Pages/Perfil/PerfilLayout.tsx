@@ -5,6 +5,7 @@ import {
   FaMapLocationDot,
   FaRegHospital,
   FaUserLarge,
+  FaJediOrder
 } from "react-icons/fa6";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -31,15 +32,6 @@ export function PerfilLayout() {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     getUserById()
   }, []);
-
-  // useEffect(() => {
-  //   if (user.senha !== '') {
-  //     setUser({
-  //       ...user,
-  //       senha: ''
-  //     })
-  //   }
-  // }, [user.id])
 
   return (
     <div className="grid grid-cols-5">
@@ -77,6 +69,14 @@ export function PerfilLayout() {
             <FaRegHospital className="text-xl text-teal-600 group-hover:text-teal-800" />
             Convênios
           </li>
+          {usuario.tipo === 'admin' && (
+            <Link to='/adminPage'>
+              <li className="group flex w-fit cursor-pointer items-center gap-4">
+                <FaJediOrder className="text-xl text-teal-600 group-hover:text-teal-800" />
+                Área Administrativa
+              </li>
+            </Link>
+          )}
         </ul>
       </aside>
       <div className="col-span-4 flex flex-col">
