@@ -30,7 +30,11 @@ function App() {
               <Route path='cartoes' element={<Cartoes />} />
             </Route>
             <Route path="/adminPage" element={<AdminLayout />}>
+              <Route path='' element={<span> pagina adm </span>} />
+              <Route path='categorias' element={<CadastroMarcas />} />
               <Route path='marcas' element={<CadastroMarcas />} />
+              <Route path='produtos' element={<CadastroMarcas />} />
+              <Route path='usuarios' element={<CadastroMarcas />} />
             </Route>
             <Route path="/medicamentos" element={<SimpleProduct />} />
           </Routes>

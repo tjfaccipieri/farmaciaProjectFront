@@ -58,8 +58,9 @@ export function Navbar() {
               <FaMagnifyingGlass className="text-xl text-neutral-700" />
             </label>
           </div>
-          <div className="flex space-x-4 text-xl text-neutral-700">
-            <Link to={usuario.token !== '' ? '/perfil' : '/login'} className="hover:text-teal-600">
+          <div className="flex items-center space-x-4 text-xl text-neutral-700">
+            <Link to={usuario.token !== '' ? '/perfil' : '/login'} className="hover:text-teal-600 flex items-center">
+            <span className="text-xs text-teal-800 w-24 text-center">{usuario.token !== '' ? `Olá ${usuario.nome}` : 'Faça login ou cadastre-se'}</span>
               <FaUserLarge />
             </Link>
             <FaBasketShopping />

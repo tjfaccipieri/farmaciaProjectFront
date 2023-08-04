@@ -37,6 +37,8 @@ export function CadastroMarcas() {
           Authorization: usuario.token,
         },
       });
+      getMarcas();
+      alert('Marca cadastrada com sucesso!');
     } catch (error) {
       console.log(error);
     }
