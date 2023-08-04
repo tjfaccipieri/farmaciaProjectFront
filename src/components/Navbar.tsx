@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/Logotipo Colorido.png";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { talert } from "../utils/alert";
 
 export function Navbar() {
   const categorias = [
@@ -82,6 +83,9 @@ export function Navbar() {
             </li>
           ))}
         </ul>
+        <button onClick={() => {
+          talert('teste','')
+        }}>testando</button>
       </div>
     </>
   );
