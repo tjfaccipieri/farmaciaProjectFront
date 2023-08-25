@@ -64,7 +64,7 @@ export function Navbar() {
             <span className="text-xs text-teal-800 w-24 text-center">{usuario.token !== '' ? `Olá ${usuario.nome}` : 'Faça login ou cadastre-se'}</span>
               <FaUserLarge />
             </Link>
-            <FaBasketShopping />
+            <FaBasketShopping className="hover:text-red-600" />
           </div>
         </div>
       </nav>

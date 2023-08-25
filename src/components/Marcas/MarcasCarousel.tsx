@@ -31,8 +31,6 @@ export function MarcasCarousel() {
       <Swiper
         spaceBetween={35}
         slidesPerView={8}
-        // onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
         navigation={true}
         modules={[Navigation]}
         loop={true}
